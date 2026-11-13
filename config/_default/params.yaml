@@ -19,9 +19,9 @@ hugoblox:
     # Schema.org type for structured data
     type: person # person | organization | local_business
     # Short tagline displayed on your site
-    tagline: "Mathematics undergraduate studying fluid dynamics and heat transfer"
+    tagline: "Mathematics undergraduate preparing for Master's study abroad"
     # Site meta description for search engines and social sharing
-    description: "Academic portfolio of Azmal Fuad Hamzah, an undergraduate mathematics student interested in computational fluid dynamics, heat transfer, and mathematical modeling."
+    description: "Academic portfolio of Azmal Fuad Hamzah, an undergraduate mathematics student interested in computational fluid dynamics, heat transfer, and mathematical modeling, preparing for graduate study abroad."
     # Social accounts (used for meta tags like Twitter Cards)
     social: {}
 
@@ -113,7 +113,7 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   copyright:
     # Copyright notice - supports {year}, {name}, {license} placeholders
-    notice: "© {year} {name}. This work is licensed under {license}"
+    notice: "© 2025 Azmal Fuad Hamzah"
     license:
       type: cc # cc | custom
       allow_derivatives: false

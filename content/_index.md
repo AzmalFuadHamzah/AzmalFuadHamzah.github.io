@@ -16,7 +16,8 @@ sections:
         computational fluid dynamics, heat transfer, numerical methods, and
         mathematical modeling. I use COMSOL Multiphysics, ANSYS, and MATLAB in
         my work on fluid-flow and thermal problems, and hope to pursue graduate
-        study in applied mathematics or data science.
+        study abroad for a master's degree in applied mathematics or data
+        science.
       # Show a call-to-action button under your biography? (optional)
       button:
         text: Download CV

@@ -1,8 +1,7 @@
 # Azmal Fuad Hamzah — Academic Portfolio
 
 This repository contains the Markdown content and files for my academic
-portfolio. It is based on the
-[HugoBlox Academic CV template](https://github.com/HugoBlox/hugo-theme-academic-cv).
+portfolio.
 
 ## Edit the site without coding
 
