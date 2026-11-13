@@ -1,6 +1,8 @@
 ---
 title: Thermal Comfort and Energy Consumption in Enclosed Spaces
 summary: An ongoing numerical study of heating strategies, heat loss, and energy use.
+show_date: false
+reading_time: false
 ---
 
 ## Overview

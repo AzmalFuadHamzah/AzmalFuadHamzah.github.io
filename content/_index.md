@@ -69,10 +69,14 @@ sections:
     design:
       view: article-grid
       columns: 2
+      show_date: false
+      show_read_time: false
+      show_read_more: false
   - block: collection
     id: writing
     content:
       title: Latest Writing
+      text: Notes on mathematics, fluid dynamics, and preparing for graduate study.
       filters:
         folders:
           - blog
@@ -80,6 +84,9 @@ sections:
     design:
       view: article-grid
       columns: 2
+      show_date: false
+      show_read_time: false
+      show_read_more: false
   - block: markdown
     id: contact
     content:

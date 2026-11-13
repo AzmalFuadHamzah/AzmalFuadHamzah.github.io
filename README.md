@@ -53,4 +53,4 @@ pnpm run dev
 
 The terminal prints the local preview address.
 
-The template is released under the MIT License; see [LICENSE.md](LICENSE.md).
+See [LICENSE.md](LICENSE.md) for this repository's license.

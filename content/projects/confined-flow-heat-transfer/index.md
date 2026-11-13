@@ -1,6 +1,8 @@
 ---
 title: CFD Analysis of Flow and Heat Transfer in Confined Geometries
 summary: An ongoing study of fluid flow, vortex shedding, and heat transfer around confined shapes.
+show_date: false
+reading_time: false
 ---
 
 ## Overview
