@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"posts">;
+}
+
+const { entry } = Astro.props;
+---
+
+<article class="card post-card">
+  <p class="eyebrow">
+    <time datetime={entry.data.date.toISOString()}>
+      {entry.data.date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })}
+    </time>
+  </p>
+  <h3><a href={`/posts/${entry.id}/`}>{entry.data.title}</a></h3>
+  <p>{entry.data.summary}</p>
+  <a class="text-link" href={`/posts/${entry.id}/`}>Read post <span aria-hidden="true">→</span></a>
+</article>

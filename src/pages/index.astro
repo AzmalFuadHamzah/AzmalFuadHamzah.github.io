@@ -1,0 +1,199 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SocialIcon from "../components/SocialIcon.astro";
+
+const [profileEntry] = await getCollection("profile");
+if (!profileEntry) throw new Error("Add the profile details in src/content/profile/profile.md.");
+
+const { data: profile } = profileEntry;
+const [undergraduate, ...previousEducation] = profile.education;
+if (!undergraduate) throw new Error("Add undergraduate education details to the profile Markdown file.");
+const sidebarContacts = profile.contacts.filter((contact) =>
+  ["email", "linkedin", "github", "whatsapp"].includes(contact.kind),
+);
+---
+
+<BaseLayout>
+  <section class="hero-section" id="about">
+    <div class="container hero">
+      <aside class="profile-sidebar">
+        <div class="profile-frame">
+          <img
+            class="profile-image"
+            src="/images/profile.jpg"
+            alt="Portrait of Azmal Fuad Hamzah"
+            width="800"
+            height="1000"
+          />
+        </div>
+        <h1 class="profile-name">{profile.name}</h1>
+        <p class="profile-caption">{profile.role}</p>
+        <p class="profile-affiliation">{profile.department}</p>
+        <ul class="profile-socials" aria-label="Social links">
+          {sidebarContacts.map((contact) => (
+            <li>
+              <a
+                href={contact.href}
+                aria-label={contact.label}
+                title={contact.label}
+                target={contact.kind === "email" ? undefined : "_blank"}
+                rel={contact.kind === "email" ? undefined : "noopener noreferrer"}
+              >
+                <SocialIcon kind={contact.kind} />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          class="button button-outline profile-download"
+          href="/uploads/Azmal_Fuad_Hamzah_CV.pdf"
+          download="Azmal_Fuad_Hamzah_CV.pdf"
+        >
+          <SocialIcon kind="download" />
+          <span>Download CV</span>
+        </a>
+      </aside>
+      <div class="hero-copy">
+        <p class="eyebrow">Academic profile</p>
+        <h2>Biography</h2>
+        <p class="lead">{profile.lead}</p>
+        {profile.biography.map((paragraph) => <p>{paragraph}</p>)}
+        <div class="hero-actions">
+          <a class="button button-outline" href="#contact">Contact me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="container">
+      <p class="eyebrow">Academic background</p>
+      <h2 class="section-heading">Education</h2>
+      <div class="education-list">
+        <article class="education-item education-primary">
+          <div class="item-heading">
+            <div>
+              <h3>{undergraduate.degree}</h3>
+              <p class="item-institution">
+                {undergraduate.institution}
+                {undergraduate.location && ` · ${undergraduate.location}`}
+              </p>
+            </div>
+            <p class="item-date">{undergraduate.period}</p>
+          </div>
+          <p class="item-result">{undergraduate.result}</p>
+          <div class="year-results">
+            {undergraduate.yearResults.map((result) => <span>{result}</span>)}
+          </div>
+        </article>
+        <div class="education-secondary">
+          {previousEducation.map((education) => (
+            <article class="education-item">
+              <div class="item-heading">
+                <div>
+                  <h3>{education.degree}</h3>
+                  <p class="item-institution">
+                    {education.institution}
+                    {education.location && ` · ${education.location}`}
+                  </p>
+                </div>
+                <p class="item-date">{education.period}</p>
+              </div>
+              <p class="item-result">{education.result}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-wash" id="research">
+    <div class="container">
+      <p class="eyebrow">Research profile</p>
+      <h2 class="section-heading">Research Interests &amp; Technical Skills</h2>
+      <div class="tag-groups">
+        {profile.tagGroups.map((group) => (
+          <div class="tag-group">
+            <h3>{group.title}</h3>
+            <ul class="tag-list">
+              {group.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <p class="eyebrow">Research work</p>
+      <h2 class="section-heading">Ongoing &amp; Completed Projects</h2>
+      <h3 class="subsection-title">Ongoing projects</h3>
+      <div class="project-grid">
+        {profile.ongoingProjects.map((project) => (
+          <article class="project-card">
+            <p class="status-label">{project.category} · {project.status}</p>
+            <h3>{project.title}</h3>
+            {project.description.map((paragraph) => <p>{paragraph}</p>)}
+            {project.supervisor && <p class="project-meta">Supervisor: {project.supervisor}</p>}
+          </article>
+        ))}
+      </div>
+      <h3 class="subsection-title completed-title">Completed projects</h3>
+      <div class="project-card project-placeholder">
+        <p>{profile.completedProjectsPlaceholder}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-wash" id="activities">
+    <div class="container">
+      <p class="eyebrow">Beyond coursework</p>
+      <h2 class="section-heading">Extracurriculars</h2>
+      <div class="activity-grid">
+        {profile.activityGroups.map((group) => (
+          <article class="activity-card">
+            <h3>{group.title}</h3>
+            <ul class="detail-list">
+              {group.items.map((item) => (
+                <li>
+                  <strong>{item.role}</strong>
+                  {item.organization && ` · ${item.organization}`}
+                  {item.period && <span>{item.period}</span>}
+                  {item.detail && <p>{item.detail}</p>}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <p class="eyebrow">Get in touch</p>
+      <h2 class="section-heading">Contact &amp; Social Links</h2>
+      <p class="contact-intro">
+        For academic, research, and professional conversations, please connect
+        through the links below.
+      </p>
+      <ul class="contact-links">
+        {profile.contacts.map((contact) => (
+          <li>
+            <a
+              href={contact.href}
+              aria-label={contact.label}
+              target={contact.kind === "email" ? undefined : "_blank"}
+              rel={contact.kind === "email" ? undefined : "noopener noreferrer"}
+            >
+              <SocialIcon kind={contact.kind} />
+              <span>{contact.text}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

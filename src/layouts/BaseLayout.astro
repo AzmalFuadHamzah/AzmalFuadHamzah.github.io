@@ -1,0 +1,99 @@
+---
+import "../styles/site.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Azmal Fuad Hamzah | Academic Portfolio",
+  description = "Undergraduate Mathematics student at Kishoreganj University, interested in computational fluid dynamics, numerical methods, and mathematical modeling.",
+} = Astro.props;
+
+const navigation = [
+  { label: "About", href: "/#about" },
+  { label: "Education", href: "/#education" },
+  { label: "Research", href: "/#research" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Activities", href: "/#activities" },
+  { label: "Contact", href: "/#contact" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f8f6" />
+    <title>{title}</title>
+    <script is:inline>
+      const savedTheme = window.localStorage.getItem("academic-portfolio-theme");
+      const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+      document.documentElement.dataset.theme = savedTheme || preferredTheme;
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="wordmark" href="/" aria-label="Azmal Fuad Hamzah home">
+          Azmal Fuad Hamzah<span>.</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+        <div class="header-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+            </svg>
+            <span>Theme</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2025 Azmal Fuad Hamzah. Built with GitHub Copilot &amp; Open Source.</p>
+      </div>
+    </footer>
+    <script is:inline>
+      const themeToggle = document.querySelector(".theme-toggle");
+      if (themeToggle) {
+        const setTheme = (theme) => {
+          document.documentElement.dataset.theme = theme;
+          window.localStorage.setItem("academic-portfolio-theme", theme);
+          themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+          themeToggle.setAttribute(
+            "aria-label",
+            theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
+          );
+        };
+
+        themeToggle.addEventListener("click", () => {
+          const nextTheme =
+            document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          setTheme(nextTheme);
+        });
+
+        const isDark = document.documentElement.dataset.theme === "dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute(
+          "aria-label",
+          isDark ? "Switch to light theme" : "Switch to dark theme",
+        );
+      }
+    </script>
+  </body>
+</html>

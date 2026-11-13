@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+
+const posts = (await getCollection("posts")).sort(
+  (first, second) => second.data.date.getTime() - first.data.date.getTime(),
+);
+---
+
+<BaseLayout title="Blog | Azmal Fuad Hamzah">
+  <section class="container content-page">
+    <h1>Blog</h1>
+    {posts.length > 0 && (
+      <div class="content-grid">
+        {posts.map((entry) => <PostCard entry={entry} />)}
+      </div>
+    )}
+  </section>
+</BaseLayout>
