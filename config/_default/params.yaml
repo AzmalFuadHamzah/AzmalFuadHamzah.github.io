@@ -9,23 +9,21 @@ hugoblox:
 
   # ────────────────────────────────────────────────────────────────────────────
   # IDENTITY
-  # Site-level branding (for people/profiles, use the author system in content/authors/)
+  # Site-level branding (individual profile details are in data/authors/)
   # ────────────────────────────────────────────────────────────────────────────
   identity:
     # Site name - shown in navbar, footer, copyright, and browser title by default
-    name: "Your Name"
+    name: "Azmal Fuad Hamzah"
     # Legal entity for copyright notices (defaults to name if not set)
     organization: ""
     # Schema.org type for structured data
     type: person # person | organization | local_business
     # Short tagline displayed on your site
-    tagline: ""
+    tagline: "Mathematics undergraduate studying fluid dynamics and heat transfer"
     # Site meta description for search engines and social sharing
-    description: "The highly-customizable Hugo Academic theme powered by HugoBlox
-      Kit. Easily create your personal academic website."
+    description: "Academic portfolio of Azmal Fuad Hamzah, an undergraduate mathematics student interested in computational fluid dynamics, heat transfer, and mathematical modeling."
     # Social accounts (used for meta tags like Twitter Cards)
-    social:
-      twitter: "GoOwnable" # Twitter/X handle for Twitter Cards (without @)
+    social: {}
 
   # ────────────────────────────────────────────────────────────────────────────
   # THEME
@@ -38,9 +36,9 @@ hugoblox:
     pack: "default"
     # Optional: Override theme pack colors
     colors:
-      primary: "" # Tailwind palette name or hex (e.g., "indigo" or "#6366f1")
-      secondary: ""
-      neutral: "" # Affects gray utilities (text-gray-*, bg-gray-*)
+      primary: "teal"
+      secondary: "amber"
+      neutral: "slate"
     # Optional: Mode-specific color overrides
     colors_light: {}
     colors_dark: {}

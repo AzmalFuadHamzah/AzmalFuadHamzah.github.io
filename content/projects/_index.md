@@ -1,14 +1,11 @@
 ---
-title: 'Projects'
-date: 2024-05-19
+title: Research Projects
 type: landing
-
-# Page sections
 sections:
   - block: collection
     content:
-      title: Selected Projects
-      text: I enjoy making things. Here are a selection of projects that I have worked on over the years.
+      title: Current and Recent Work
+      text: Research projects in computational fluid dynamics, heat transfer, and energy optimization.
       filters:
         folders:
           - projects
