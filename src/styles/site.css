@@ -129,16 +129,24 @@ p {
 }
 
 .wordmark {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
   flex: 0 0 auto;
-  color: var(--ink);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #d7dfdc;
+  border-radius: 0.55rem;
+  background: #f9fcfd;
+  box-shadow: 0 2px 8px rgb(21 39 48 / 10%);
   text-decoration: none;
 }
 
-.wordmark span {
-  color: var(--accent);
+.wordmark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .main-nav {

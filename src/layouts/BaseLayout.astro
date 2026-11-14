@@ -28,6 +28,7 @@ const navigation = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f7f8f6" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
     <title>{title}</title>
     <script is:inline>
       const savedTheme = window.localStorage.getItem("academic-portfolio-theme");
@@ -42,7 +43,7 @@ const navigation = [
     <header class="site-header">
       <div class="header-inner">
         <a class="wordmark" href="/" aria-label="Azmal Fuad Hamzah home">
-          Azmal Fuad Hamzah<span>.</span>
+          <img src="/images/brand-mark.png" alt="Azmal Fuad Hamzah 7H monogram" width="48" height="48" />
         </a>
         <nav class="main-nav" aria-label="Main navigation">
           {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
